@@ -1,0 +1,29 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<beans xmlns = "http://www.springframework.org/schema/beans"
+       xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation = "http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <bean id="normal" class="Account_Type" factory-method="valueOf">
+        <constructor-arg value="NORMAL"/>
+    </bean>
+
+    <bean id = "customer1" class="Customer">
+        <constructor-arg value="Karol"/>
+        <constructor-arg value="Struniawski"/>
+        <constructor-arg value="Warsaw"/>
+        <property name="accounts">
+            <list>
+                <ref bean="account1"/>
+            </list>
+        </property>
+    </bean>
+    
+    <bean id = "account1" class="Account">
+        <constructor-arg ref="customer1"/>
+        <constructor-arg ref="normal"/>
+
+    </bean>
+
+</beans>
